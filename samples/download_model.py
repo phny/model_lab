@@ -32,4 +32,3 @@ if __name__ == "__main__":
     model_type = args.model_type
 
     main(model_name, model_type)
-    
