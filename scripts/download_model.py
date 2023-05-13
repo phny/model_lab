@@ -1,9 +1,11 @@
 #coding:utf-8
 
+import os, sys
+sys.path.append(os.getcwd())
+
 from loguru import logger
 import argparse
 from utils.download_model import Downloader
-
 
 
 model_types = {
