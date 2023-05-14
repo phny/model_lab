@@ -3,9 +3,10 @@ import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
     net = model_zoo.get_model('yolo3_darknet53_voc', pretrained=True)
+    print(net.collect_params())
 
-    im_fname = 'resources/dog_bike_car.jpg'
     # NOTE 如果更换了其他模型，这个图片加载方法也应该相应更改
+    im_fname = 'resources/dog_bike_car.jpg'
     x, orig_img = data.transforms.presets.yolo.load_test(im_fname)
 
     class_IDs, scores, bounding_boxs = net(x)

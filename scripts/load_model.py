@@ -14,8 +14,7 @@ from gluoncv.data.transforms.presets.yolo import load_test
 
 def main(model_sym, model_params):
     # 从sym、params中加载模型
-    loader = LoadModel(model_sym, model_params)
-    model = loader.ModelInstance()
+    model = LoadModel(model_sym, model_params).ModelInstance()
 
     # model = get_model("yolo3_darknet53_voc", pretrained=True)
 

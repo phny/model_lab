@@ -5,7 +5,7 @@ sys.path.append(os.getcwd())
 
 from loguru import logger
 import argparse
-from utils.download_model import Downloader
+from utils.get_model import Downloader
 
 
 model_types = {

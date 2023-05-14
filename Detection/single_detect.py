@@ -15,16 +15,18 @@ from gluoncv import utils
 def main(args):
     # 加载模型
     model = LoadModel(args.model_sym, args.model_params).ModelInstance()
+    logger.info(model)
     logger.info(f"Finish load model {args.model_sym}")
     # 加载图片
     image, ori_image = load_test(args.image_path)
+    image = image.transpose((0, 2, 3, 1))
     logger.info(f"Finish load image, shape {image.shape}")
     # 推理
     ids, scores, bboxes = model(image)
     logger.info(f"Finish inference, scores {scores}")
     # 保存结果
     dst_path = os.path.join(args.save_dir, os.path.basename(args.image_path))
-    ax = utils.viz.plot_bbox(ori_image, bboxes[0], scores[0], ids[0], class_names=model.classes)
+    ax = utils.viz.plot_bbox(ori_image, bboxes[0], scores[0], ids[0])
     plt.savefig(dst_path)
     logger.info(f"Finish detect, result in {dst_path}")
     
