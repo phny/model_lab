@@ -27,6 +27,7 @@ class Downloader:
         net = gluoncv.model_zoo.get_model(self.model_name, pretrained=True, root="./models/.caches")
         net.hybridize()
         model_save_path = os.path.join(self.save_path, model_types[self.model_type], self.model_name)
+        os.makedirs(os.path.dirname(model_save_path), exist_ok=True)
         # layout='HWC'，即NHCW，其中N是batch_size, C是通道数
         gluoncv.utils.export_block(model_save_path, net, preprocess=True, layout='HWC')
         logger.info(f"Downloaded model in {model_save_path}")
